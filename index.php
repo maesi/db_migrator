@@ -1,7 +1,7 @@
 <?php
 
 function __autoload($name) {
-	$include = str_replace("\\", "/", $name) . ".php";
+	$include = "class/". str_replace("\\", "/", $name) . ".php";
 	include ($include);
 }
 use dbmigrator\ExecutableCreator;
