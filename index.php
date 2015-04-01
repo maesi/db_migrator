@@ -10,9 +10,10 @@ use dbmigrator\DBFactory;
 use logger\ConsoleWriter;
 use logger\FileWriter;
 use logger\Logger;
+use logger\Level;
 
-Logger::addWriter(new ConsoleWriter());
-Logger::addWriter(new FileWriter("log.txt"));
+Logger::addWriter(new ConsoleWriter(Level::info()));
+Logger::addWriter(new FileWriter(Level::warning(), "log.txt"));
 
 $database = DBFactory::create();
 

@@ -1,11 +1,12 @@
 <?php
 namespace logger;
 
-class FileWriter implements Writer {
+class FileWriter extends AbstractWriter {
 
 	private $filename;
 
-	function __construct($filename) {
+	function __construct(Level $minLevel, $filename) {
+		parent::__construct($minLevel);
 		$this->filename = $filename;
 	}
 

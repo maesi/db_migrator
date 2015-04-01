@@ -27,6 +27,10 @@ final class Level {
 		$this->message = $message;
 	}
 	
+	function isGreater(Level $level) {
+		return $this->level >= $level->level; 
+	}
+	
 	function __toString() {
 		return $this->message;
 	}

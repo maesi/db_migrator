@@ -1,10 +1,12 @@
 <?php
 namespace logger;
 
-class ConsoleWriter implements Writer {
+class ConsoleWriter extends AbstractWriter {
 
 	function write(Level $level, $message) {
-		echo $level . ": " . self::format($message) . "<br />";
+		if($this->checkLevel($level)) {
+			echo $level . ": " . self::format($message) . "<br />";
+		}
 	}
 
 	private static function format($string) {

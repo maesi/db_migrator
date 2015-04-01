@@ -34,7 +34,7 @@ abstract class FileExecutor implements Executable {
 	}
 	
 	public function getHash() {
-		return sha1_file($this->file, true);
+		return sha1_file($this->file);
 	}
 	
 	public function execute(DB $database) {
