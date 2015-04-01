@@ -2,3 +2,6 @@
 .buildpath
 .project
 .settings
+
+# log file
+log.txt
