@@ -9,10 +9,10 @@ class FileWriter implements Writer {
 		$this->filename = $filename;
 	}
 
-	function write($message) {
+	function write(Level $level, $message) {
 		$content = $message;
 		if(file_exists($this->filename)) {
-			$content = file_get_contents($this->filename) . $content;
+			$content = $level . ": " . file_get_contents($this->filename) . $content;
 		}
 		file_put_contents($this->filename, $content);
 	}

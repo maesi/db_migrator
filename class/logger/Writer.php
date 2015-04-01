@@ -3,6 +3,6 @@ namespace logger;
 
 interface Writer {
 
-	function write($message);
+	function write(Level $level, $message);
 }
 ?>

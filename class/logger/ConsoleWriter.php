@@ -3,8 +3,8 @@ namespace logger;
 
 class ConsoleWriter implements Writer {
 
-	function write($message) {
-		echo self::format($message) . "<br />";
+	function write(Level $level, $message) {
+		echo $level . ": " . self::format($message) . "<br />";
 	}
 
 	private static function format($string) {

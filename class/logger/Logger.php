@@ -10,8 +10,9 @@ class Logger {
 	}
 
 	static function write($message) {
+		$level = Level::info();
 		foreach(self::$writers as $writer) {
-			$writer->write($message);
+			$writer->write($level, $message);
 		}
 	}
 }
