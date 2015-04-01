@@ -2,6 +2,7 @@
 namespace dbmigrator;
 
 use logger\Logger;
+use logger\Level;
 
 class MySQL implements DB {
 
@@ -18,11 +19,10 @@ class MySQL implements DB {
 			if($stmt == ";") {
 				continue;
 			}
-			Logger::write($stmt);
+			Logger::info($stmt);
 			if(!$this->mysqli->query($stmt)) {
-				Logger::write("Error:" . $this->mysqli->errno . ":" . $this->mysqli->error);
+				Logger::error($this->mysqli->errno . ":" . $this->mysqli->error);
 			}
-			Logger::write("\n");
 		}
 	}
 }
