@@ -1,0 +1,1 @@
+ALTER TABLE person ADD sex VARCHAR(1) DEFAULT 'm';
