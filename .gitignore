@@ -1,0 +1,4 @@
+# ignore eclipse settings
+.buildpath
+.project
+.settings
