@@ -5,7 +5,7 @@ class ExecutableCreator {
 	
 	static function create($directory) {
 		$executables = array();
-		if ($handle = opendir($directory)) {
+		if (is_dir($directory) && $handle = opendir($directory)) {
 		    while (false !== ($file = readdir($handle))) {
 		        if ($file != "." && $file != "..") {
 		            array_push($executables, new SqlFileExecutor($directory . "/" . $file));
