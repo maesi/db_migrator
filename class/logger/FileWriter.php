@@ -11,11 +11,13 @@ class FileWriter extends AbstractWriter {
 	}
 
 	function write(Level $level, $message) {
-		$content = $message;
-		if(file_exists($this->filename)) {
-			$content = $level . ": " . file_get_contents($this->filename) . $content;
+		if($this->checkLevel($level)) {
+			$content =  $level . ": " . $message;
+			if(file_exists($this->filename)) {
+				$content =file_get_contents($this->filename) . $content;
+			}
+			file_put_contents($this->filename, $content);
 		}
-		file_put_contents($this->filename, $content);
 	}
 }
 ?>
