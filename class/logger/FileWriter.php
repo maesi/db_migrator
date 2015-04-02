@@ -5,9 +5,9 @@ class FileWriter extends AbstractWriter {
 
 	private $filename;
 
-	function __construct(Level $minLevel, $filename) {
-		parent::__construct($minLevel);
-		$this->filename = $filename;
+	function __construct($configuration) {
+		parent::__construct($configuration);
+		$this->filename = $configuration['file'];
 	}
 
 	function write(Level $level, $message) {

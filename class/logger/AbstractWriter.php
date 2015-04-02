@@ -5,8 +5,8 @@ abstract class AbstractWriter implements Writer {
 	
 	private $minLevel;
 	
-	function __construct(Level $minLevel) {
-		$this->minLevel = $minLevel;
+	function __construct(array $configuration) {
+		$this->minLevel = Level::fromName($configuration['level']);
 	}
 	
 	function checkLevel(Level $logLevel) {

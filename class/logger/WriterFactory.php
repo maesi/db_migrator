@@ -1,9 +1,7 @@
 <?php
-namespace dbmigrator;
+namespace logger;
 
-use exception\ClassNotFoundException;
-
-class DBFactory {
+class WriterFactory {
 
 	static function create(array $configuration) {
 		$clazzName = $configuration['class'];
@@ -11,9 +9,7 @@ class DBFactory {
 			$clazz = new \ReflectionClass($clazzName);
 			return $clazz->newInstance($configuration);
 		} catch(ClassNotFoundException $nfex) {
-			throw new \Exception("DB-Type $clazzName not supported");
+			throw new \Exception("Logger-Writer $clazzName not supported");
 		}
 	}
 }
-
-?>

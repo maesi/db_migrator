@@ -19,6 +19,11 @@ final class Level {
 		return new Level(4, "error");
 	}
 	
+	static function fromName($name) {
+		$refMethod = new \ReflectionMethod('logger\Level', $name);
+		return $refMethod->invoke(null);
+	}
+	
 	private $level;
 	private $message;
 	
