@@ -12,7 +12,8 @@ class FileWriter extends AbstractWriter {
 
 	function write(Level $level, $message) {
 		if($this->checkLevel($level)) {
-			$content =  $level . ": " . $message;
+			$dateTime = new \DateTime();
+			$content =  $dateTime->format('Y-m-d H:i:s') . " " . $level . ": " . $message . "\n";
 			if(file_exists($this->filename)) {
 				$content =file_get_contents($this->filename) . $content;
 			}
