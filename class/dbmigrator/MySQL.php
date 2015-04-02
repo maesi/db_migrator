@@ -8,8 +8,8 @@ class MySQL implements DB {
 
 	private $mysqli;
 
-	public function __construct($host, $user, $password) {
-		$this->mysqli = new \mysqli($host, $user, $password);
+	public function __construct(array $configuration) {
+		$this->mysqli = new \mysqli($configuration['host'], $configuration['username'], $configuration['password']);
 	}
 
 	function execute($statement) {

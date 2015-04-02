@@ -1,14 +1,17 @@
 <?php
 namespace dbmigrator;
 
+use exception\ClassNotFoundException;
+
 class DBFactory {
 
-	static function create($type) {
-		switch(strtolower($type)) {
-			case strtolower('MySQL'):
-				return new MySQL("localhost", "root", "root");
-			default:
-				throw new \Exception("DB-Type $type not supported");
+	static function create(array $configuration) {
+		$clazzName = $configuration['type'];
+		try {
+			$clazz = new \ReflectionClass($clazzName);
+			return $clazz->newInstance($configuration);
+		} catch(ClassNotFoundException $nfex) {
+			throw new \Exception("DB-Type $clazzName not supported");
 		}
 	}
 }

@@ -5,8 +5,8 @@ class DBMigrator {
 	
 	private $database;
 	
-	function __construct() {
-		$this->configure();
+	function __construct(array $configuration) {
+		$this->configure($configuration);
 	}
 	
 	function migrate() {
@@ -15,9 +15,9 @@ class DBMigrator {
 		$this->executeScripts();
 	}
 
-	private function configure() {
+	private function configure($configuration) {
 		// TODO: read from config file
-		$this->database = DBFactory::create('MySQL');
+		$this->database = DBFactory::create($configuration);
 	}
 	
 	private function createDatabaseStructure() {
