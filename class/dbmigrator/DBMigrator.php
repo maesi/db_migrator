@@ -22,9 +22,6 @@ class DBMigrator {
 	}
 	
 	private function createDatabaseStructure() {
-		$create_database_sql = file_get_contents('config/'.$this->dbName.'/create_database.sql');
-		$this->database->execute($create_database_sql);
-		
 		$create_table_sql = file_get_contents('config/'.$this->dbName.'/create_table.sql');
 		$this->database->execute($create_table_sql);
 	}
