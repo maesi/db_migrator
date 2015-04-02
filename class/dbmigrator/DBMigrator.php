@@ -10,20 +10,28 @@ class DBMigrator {
 	}
 	
 	function migrate() {
-		$create_database_sql = file_get_contents('config/create_database.sql');
-		$this->database->execute($create_database_sql);
+		$this->createDatabaseStructure();
 		
-		$create_table_sql = file_get_contents('config/create_table.sql');
-		$this->database->execute($create_table_sql);
-		
-		foreach(ExecutableCreator::create('testdata') as $sql) {
-			$sql->execute($this->database);
-		}
+		$this->executeScripts();
 	}
 
 	private function configure() {
 		// TODO: read from config file
 		$this->database = DBFactory::create();
+	}
+	
+	private function createDatabaseStructure() {
+		$create_database_sql = file_get_contents('config/create_database.sql');
+		$this->database->execute($create_database_sql);
+		
+		$create_table_sql = file_get_contents('config/create_table.sql');
+		$this->database->execute($create_table_sql);
+	}
+	
+	private function executeScripts() {
+		foreach(ExecutableCreator::create('testdata') as $sql) {
+			$sql->execute($this->database);
+		}
 	}
 	
 }
