@@ -2,14 +2,14 @@
 namespace dbmigrator;
 
 class DBFactory {
-	
-	private static $instance;
-	
-	static function create() {
-		if(self::$instance == null) {
-			self::$instance = new MySQL("localhost","root","root");
+
+	static function create($type) {
+		switch(strtolower($type)) {
+			case strtolower('MySQL'):
+				return new MySQL("localhost", "root", "root");
+			default:
+				throw new \Exception("DB-Type $type not supported");
 		}
-		return self::$instance;
 	}
 }
 

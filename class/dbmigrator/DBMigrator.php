@@ -17,7 +17,7 @@ class DBMigrator {
 
 	private function configure() {
 		// TODO: read from config file
-		$this->database = DBFactory::create();
+		$this->database = DBFactory::create('MySQL');
 	}
 	
 	private function createDatabaseStructure() {
