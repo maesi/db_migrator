@@ -21,7 +21,7 @@ class MySQL implements DB {
 			}
 			Logger::info($stmt);
 			if(!$this->mysqli->query($stmt)) {
-				Logger::error($this->mysqli->errno . ":" . $this->mysqli->error);
+				throw new \Exception($this->mysqli->errno . ":" . $this->mysqli->error);
 			}
 		}
 	}
