@@ -20,8 +20,11 @@ class MySQL implements DB {
 				continue;
 			}
 			Logger::info($stmt);
-			if(!$this->mysqli->query($stmt)) {
+			if(!$result = $this->mysqli->query($stmt)) {
 				throw new \Exception($this->mysqli->errno . ":" . $this->mysqli->error);
+			}
+			if($result->num_rows > 0) {
+				return $result->fetch_object();
 			}
 		}
 	}
