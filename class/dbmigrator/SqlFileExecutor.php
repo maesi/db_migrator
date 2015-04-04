@@ -3,7 +3,7 @@ namespace dbmigrator;
 
 use logger\Logger;
 
-class SqlFileExecutor implements Executable {
+class SqlFileExecutor implements Exe 	cutable {
 
 	private $file;
 	
@@ -27,7 +27,11 @@ class SqlFileExecutor implements Executable {
 		return substr($filename, 0, strpos($filename, "_"));
 	}
 	
-	function getName() {
+	function getHash() {
+		return sha1_file($this->file);
+	}
+	
+	private function getName() {
 		$filename = $this->getFilename();
 		return substr($filename, strpos($filename, "_") + 1, strrpos($filename, ".") - strpos($filename, "_") - 1);
 	}
@@ -42,9 +46,5 @@ class SqlFileExecutor implements Executable {
 	
 	private function readContent() {
 		$this->content = file_get_contents($this->file);
-	}
-	
-	function getHash() {
-		return sha1_file($this->file);
 	}
 }
