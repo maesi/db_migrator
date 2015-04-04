@@ -19,7 +19,7 @@ class MySQL implements DB {
 			if($stmt == ";") {
 				continue;
 			}
-			Logger::info($stmt);
+			Logger::debug($stmt);
 			if(!$result = $this->mysqli->query($stmt)) {
 				throw new \Exception($this->mysqli->errno . ":" . $this->mysqli->error);
 			}
