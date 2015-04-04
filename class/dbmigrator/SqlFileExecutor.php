@@ -15,11 +15,13 @@ class SqlFileExecutor implements Executable {
 	}
 	
 	function execute(DB $database) {
-		$sql = 'INSERT INTO _migration (version, name, checksum)';
-		$sql .= ' VALUES ("' . $this->getVersion() . '", "' . $this->getName() . '", "' . $this->getHash() . '")';
-		$database->execute($sql);
-		Logger::debug($this->getVersion() . " -> " . $this->getName());
-		$database->execute($this->content);
+		if(!$this->alreadyExecuted($database)) {
+			$sql = 'INSERT INTO _migration (version, name, checksum)';
+			$sql .= ' VALUES ("' . $this->getVersion() . '", "' . $this->getName() . '", "' . $this->getHash() . '")';
+			$database->execute($sql);
+			Logger::debug($this->getVersion() . " -> " . $this->getName());
+			$database->execute($this->content);
+		}
 	}
 	
 	function getVersion() {
@@ -29,6 +31,20 @@ class SqlFileExecutor implements Executable {
 	
 	function getHash() {
 		return sha1_file($this->file);
+	}
+	
+	private function alreadyExecuted(DB $database) {
+		$sql = 'SELECT * FROM _migration WHERE version="' . $this->getVersion() . '"';
+		$result = $database->execute($sql);
+		if(count($result) > 0) {
+			if($result->checksum == $this->getHash()) {
+				Logger::info($this->getVersion() . " already exists");
+			} else {
+				Logger::warning($this->getVersion() . " exists in different version");
+			}
+			return true;
+		}
+		return false;
 	}
 	
 	private function getName() {
