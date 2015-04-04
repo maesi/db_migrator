@@ -37,10 +37,11 @@ class SqlFileExecutor implements Executable {
 		$sql = 'SELECT * FROM _migration WHERE version="' . $this->getVersion() . '"';
 		$result = $database->execute($sql);
 		if(count($result) > 0) {
+			$messageStart = "File with Version " . $this->getVersion();
 			if($result->checksum == $this->getHash()) {
-				Logger::info($this->getVersion() . " already exists");
+				Logger::info($messageStart . " already exists");
 			} else {
-				Logger::warning($this->getVersion() . " exists in different version");
+				Logger::warning($messageStart . " exists with different checksum");
 			}
 			return true;
 		}
