@@ -54,8 +54,8 @@ class SqlFileExecutor implements Executable {
 	}
 	
 	private function getFilename() {
-		if(strrpos($this->file, "/")) {
-			return substr($this->file, strrpos($this->file, "/") + 1);
+		if(strrpos($this->file, DIRECTORY_SEPARATOR)) {
+			return substr($this->file, strrpos($this->file, DIRECTORY_SEPARATOR) + 1);
 		} else {
 			return $this->file;
 		}

@@ -8,7 +8,7 @@ class ExecutableCreator {
 		if (is_dir($directory) && $handle = opendir($directory)) {
 		    while (false !== ($file = readdir($handle))) {
 		        if ($file != "." && $file != "..") {
-		            array_push($executables, new SqlFileExecutor($directory . "/" . $file));
+		            array_push($executables, new SqlFileExecutor($directory . DIRECTORY_SEPARATOR . $file));
 		        }
 		    }
 		    closedir($handle);

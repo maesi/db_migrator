@@ -12,7 +12,6 @@ class DBMigrator {
 	
 	function migrate() {
 		$this->createDatabaseStructure();
-		
 		$this->executeScripts();
 	}
 
@@ -22,12 +21,12 @@ class DBMigrator {
 	}
 	
 	private function createDatabaseStructure() {
-		$create_table_sql = file_get_contents('config/'.$this->dbName.'/create_table.sql');
+		$create_table_sql = file_get_contents('config'.DIRECTORY_SEPARATOR.$this->dbName.DIRECTORY_SEPARATOR.'create_table.sql');
 		$this->database->execute($create_table_sql);
 	}
 	
 	private function executeScripts() {
-		foreach(ExecutableCreator::create('testdata/'.$this->dbName) as $sql) {
+		foreach(ExecutableCreator::create('testdata'.DIRECTORY_SEPARATOR.$this->dbName) as $sql) {
 			$sql->execute($this->database);
 		}
 	}

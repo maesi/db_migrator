@@ -1,7 +1,7 @@
 <?php
 
 function __autoload($name) {
-	$include = "class/" . str_replace("\\", "/", $name) . ".php";
+	$include = "class". DIRECTORY_SEPARATOR . str_replace("\\", DIRECTORY_SEPARATOR, $name) . ".php";
 	if(!file_exists($include)) {
 		throw new exception\ClassNotFoundException("Class $name nonexistent.");
 	}
