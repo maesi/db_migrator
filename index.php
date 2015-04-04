@@ -1,10 +1,9 @@
 <?php
-use exception\ClassNotFoundException;
 
 function __autoload($name) {
 	$include = "class/" . str_replace("\\", "/", $name) . ".php";
 	if(!file_exists($include)) {
-		throw new ClassNotFoundException("Class $name nonexistent.");
+		throw new exception\ClassNotFoundException("Class $name nonexistent.");
 	}
 	include ($include);
 }
