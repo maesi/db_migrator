@@ -3,7 +3,7 @@ namespace dbmigrator;
 
 use logger\Logger;
 
-class SqlFileExecutor implements Exe 	cutable {
+class SqlFileExecutor implements Executable {
 
 	private $file;
 	
