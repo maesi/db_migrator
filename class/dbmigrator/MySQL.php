@@ -23,7 +23,7 @@ class MySQL implements DB {
 			if(!$result = $this->mysqli->query($stmt)) {
 				throw new \Exception($this->mysqli->errno . ":" . $this->mysqli->error);
 			}
-			if($result->num_rows > 0) {
+			if(@$result->num_rows > 0) {
 				return $result->fetch_object();
 			}
 		}
