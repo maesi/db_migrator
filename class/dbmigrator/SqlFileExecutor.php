@@ -19,7 +19,7 @@ class SqlFileExecutor implements Executable {
 			$sql = 'INSERT INTO _migration (version, name, checksum)';
 			$sql .= ' VALUES ("' . $this->getVersion() . '", "' . $this->getName() . '", "' . $this->getHash() . '")';
 			$database->execute($sql);
-			Logger::debug($this->getVersion() . " -> " . $this->getName());
+			Logger::info("Execute file " . $this->file);
 			$database->execute($this->content);
 		}
 	}
