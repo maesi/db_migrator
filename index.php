@@ -1,18 +1,8 @@
 <?php
-
-function __autoload($name) {
-	$include = "class". DIRECTORY_SEPARATOR . str_replace("\\", DIRECTORY_SEPARATOR, $name) . ".php";
-	if(!file_exists($include)) {
-		throw new exception\ClassNotFoundException("Class $name nonexistent.");
-	}
-	include ($include);
-}
+include 'stub.php';
 
 use dbmigrator\DBMigrator;
-use logger\ConsoleWriter;
-use logger\FileWriter;
 use logger\Logger;
-use logger\Level;
 use logger\WriterFactory;
 
 $config = parse_ini_file('dbmigrator.ini', true);
