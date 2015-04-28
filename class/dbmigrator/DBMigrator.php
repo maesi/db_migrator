@@ -10,9 +10,9 @@ class DBMigrator {
 		$this->configure($configuration);
 	}
 	
-	function migrate() {
+	function migrate($directory) {
 		$this->createDatabaseStructure();
-		$this->executeScripts();
+		$this->executeScripts($directory);
 	}
 
 	private function configure($configuration) {
@@ -25,8 +25,8 @@ class DBMigrator {
 		$this->database->execute($create_table_sql);
 	}
 	
-	private function executeScripts() {
-		foreach(ExecutableCreator::create('testdata'.DIRECTORY_SEPARATOR.$this->dbName) as $sql) {
+	private function executeScripts($directory) {
+		foreach(ExecutableCreator::create($directory.DIRECTORY_SEPARATOR.$this->dbName) as $sql) {
 			$sql->execute($this->database);
 		}
 	}

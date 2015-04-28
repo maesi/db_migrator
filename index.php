@@ -17,7 +17,7 @@ try {
 	}
 	
 	$dbmigrator = new DBMigrator($config['db.connection']);
-	$dbmigrator->migrate();
+	$dbmigrator->migrate($config['src']['directory']);
 } catch(Exception $ex) {
 	Logger::error($ex);
 }
