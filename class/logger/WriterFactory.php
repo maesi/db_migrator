@@ -9,7 +9,8 @@ class WriterFactory {
 			$clazz = new \ReflectionClass($clazzName);
 			return $clazz->newInstance($configuration);
 		} catch(ClassNotFoundException $nfex) {
-			throw new \Exception("Logger-Writer $clazzName not supported");
+		} catch(\ReflectionException $rex) {
 		}
+		throw new \Exception("Logger-Writer $clazzName not supported");
 	}
 }

@@ -11,8 +11,9 @@ class DBFactory {
 			$clazz = new \ReflectionClass($clazzName);
 			return $clazz->newInstance($configuration);
 		} catch(ClassNotFoundException $nfex) {
-			throw new \Exception("DB-Type $clazzName not supported");
+		} catch(\ReflectionException $rex) {
 		}
+		throw new \Exception("DB-Type $clazzName not supported");
 	}
 }
 

@@ -6,5 +6,5 @@ if($extension == 'phar') {
 	define("DB_MIGRATOR_ROOT", dirname(__FILE__).'/');
 }
 require_once DB_MIGRATOR_ROOT.'class/Autoloader.php';
-spl_autoload_register('\Autoloader::load');
+\Autoloader::register();
 __HALT_COMPILER();
