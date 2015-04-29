@@ -1,6 +1,7 @@
 <?php
 namespace dbmigrator;
 
+use logger\Logger;
 class ExecutableCreator {
 	
 	static function create($directory) {
@@ -8,7 +9,31 @@ class ExecutableCreator {
 		if (is_dir($directory) && $handle = opendir($directory)) {
 		    while (false !== ($file = readdir($handle))) {
 		        if ($file != "." && $file != "..") {
-		            array_push($executables, new SqlFileExecutor($directory . DIRECTORY_SEPARATOR . $file));
+		        	$fileWithPath = $directory . DIRECTORY_SEPARATOR . $file;
+		        	$extension = pathinfo($fileWithPath, PATHINFO_EXTENSION);
+		        	if($extension == 'sql') {
+		        		Logger::debug("sql file ($fileWithPath) found");
+		            	array_push($executables, new SqlFileExecutor($fileWithPath));
+		        	} else if($extension == 'php') {
+		        		Logger::debug("php file ($fileWithPath) found");
+		        		include($fileWithPath);
+		        		$className = AbstractFileExecutor::getNameFromFilename($file);
+		        		$reflectionClass = new \ReflectionClass($className);
+		        		
+		        		$isExecutable = false;
+		        		foreach ($reflectionClass->getInterfaceNames() as $interface) {
+							if($interface == 'dbmigrator\Executable') {
+								$isExecutable = true;
+							}
+		        		}
+		        		if($isExecutable) {
+		        			array_push($executables, $reflectionClass->newInstance($fileWithPath));
+		        		} else {
+		        			Logger::warning("class $className does not implement dbmigrator\Executable");
+		        		}
+		        	} else {
+		        		Logger::warning("file ($fileWithPath) has unknown type ($extension)");
+		        	}
 		        }
 		    }
 		    closedir($handle);
