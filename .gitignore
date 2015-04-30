@@ -5,3 +5,6 @@
 
 # log file
 log
+
+# created phar
+*.phar
