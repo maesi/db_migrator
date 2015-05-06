@@ -18,7 +18,7 @@ class Runner {
 		try {
 			$dbmigrator = new DBMigrator($config['db.connection']);
 			$dbmigrator->migrate($config['src']['directory']);
-		} catch(Exception $ex) {
+		} catch(\Exception $ex) {
 			Logger::error($ex);
 		}
 	}
