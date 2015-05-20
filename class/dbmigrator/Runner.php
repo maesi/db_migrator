@@ -7,7 +7,7 @@ use logger\Logger;
 class Runner {
 
 	public static function fromIni($inifile = 'dbmigrator.ini') {
-		$config = parse_ini_file('dbmigrator.ini', true);
+		$config = parse_ini_file($inifile, true);
 		
 		self::fromConfig($config);
 	}
