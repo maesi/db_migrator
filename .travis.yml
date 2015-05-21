@@ -7,7 +7,7 @@ after_success: php createPhar.php
 
 deploy:
   provider: releases
-  api_key: 8d0f71a9308c8c9ea3ecf86595a52892ad5802af
+  api_key: 2bb5afc00bc09d2c08d8edec99d698dc8f63bb3d
   file: db_migrator.phar
   skip_cleanup: true
   on:
