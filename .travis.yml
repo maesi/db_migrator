@@ -10,3 +10,4 @@ deploy:
   file: db_migrator.phar
   on:
     repo: maesi/db_migrator
+    tags: true
