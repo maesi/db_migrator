@@ -4,3 +4,11 @@ php:
 script: phpunit test
 
 after_success: php createPhar.php
+
+deploy:
+  provider: releases
+  api_key: 8d0f71a9308c8c9ea3ecf86595a52892ad5802af
+  file: db_migrator.phar
+  skip_cleanup: true
+  on:
+    tags: true
