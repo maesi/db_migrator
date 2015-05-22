@@ -1,4 +1,15 @@
 {
+    "name": "maesi/dbmigrator",
+    "type": "library",
+    "description": "",
+    "homepage": "https://github.com/maesi/db_migrator",
+    "authors": [
+    	{
+    		"name": "Marcel Arnold",
+    		"homepage": "https://github.com/maesi",
+    		"role": "Developer"
+    	}
+    ],
     "require-dev": {
         "phpunit/phpunit": "4.6.*"
     }
