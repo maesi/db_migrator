@@ -10,7 +10,8 @@ $phar = new Phar($pharFile);
 
 $Directory = new RecursiveDirectoryIterator(__DIR__.DIRECTORY_SEPARATOR);
 $Iterator = new RecursiveIteratorIterator($Directory);
-$Regex = new RegexIterator($Iterator, '/^.+(class|config).+\.\w+$/i', RecursiveRegexIterator::GET_MATCH);
+$pattern = '/^' . preg_quote(__DIR__.DIRECTORY_SEPARATOR) . '(class|config).+\.\w+$/i';
+$Regex = new RegexIterator($Iterator, $pattern, RecursiveRegexIterator::GET_MATCH);
 foreach($Regex as $name => $object){
 	$name = str_replace(__DIR__.DIRECTORY_SEPARATOR, '', $name);
 	echo "add file: $name<br />";
