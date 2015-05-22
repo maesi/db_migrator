@@ -5,6 +5,6 @@ if($extension == 'phar') {
 } else {
 	define("DB_MIGRATOR_ROOT", dirname(__FILE__).'/');
 }
-require_once DB_MIGRATOR_ROOT.'class/Autoloader.php';
+require_once DB_MIGRATOR_ROOT.'src/maesi/dbmigrator/Autoloader.php';
 \Autoloader::register();
 __HALT_COMPILER();
