@@ -6,8 +6,9 @@
 # log file
 log
 
-# dependency-dir
+# composer
 vendor
+composer.lock
 
 # created phar
 *.phar
