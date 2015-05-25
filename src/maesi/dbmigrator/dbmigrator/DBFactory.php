@@ -10,7 +10,6 @@ class DBFactory {
 		try {
 			$clazz = new \ReflectionClass($clazzName);
 			return $clazz->newInstance($configuration);
-		} catch(ClassNotFoundException $nfex) {
 		} catch(\ReflectionException $rex) {
 		}
 		throw new \Exception("DB-Type $clazzName not supported");
