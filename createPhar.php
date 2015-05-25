@@ -1,5 +1,6 @@
 <?php
-$pharFile = __DIR__.DIRECTORY_SEPARATOR.'db_migrator.phar';
+$file = isset($_GET['file']) ? $_GET['file'] : 'db_migrator.phar';
+$pharFile = __DIR__.DIRECTORY_SEPARATOR.$file;
 if(file_exists($pharFile)) {
 	echo "delete existing phar<br />";
 	unlink($pharFile);
