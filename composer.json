@@ -10,6 +10,9 @@
     		"role": "Developer"
     	}
     ],
+    "autoload": {
+        "psr-4": {"maesi\\": "src/"}
+    },
     "require": {
         "monolog/monolog": "1.13.1"
     },
