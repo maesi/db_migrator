@@ -1,9 +1,6 @@
 <?php
 namespace dbmigrator;
 
-use logger\Logger;
-use logger\Level;
-
 class MySQL implements DB {
 
 	private $mysqli;

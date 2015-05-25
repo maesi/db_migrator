@@ -1,8 +1,6 @@
 <?php
 namespace dbmigrator;
 
-use logger\Logger;
-
 class PHPFileExecutor implements Executable {
 
 	static function getNameFromFilename($filename) {

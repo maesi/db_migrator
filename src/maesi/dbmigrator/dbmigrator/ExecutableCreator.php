@@ -1,7 +1,6 @@
 <?php
 namespace dbmigrator;
 
-use logger\Logger;
 class ExecutableCreator {
 	
 	static function create($directory) {
