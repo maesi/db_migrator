@@ -4,7 +4,7 @@ php:
 - 5.4
 - 5.5
 - 5.6
-env: ARTEFACT_VERSION=1.0.$TRAVIS_BUILD_NUMBER ARTEFACT_NAME=db_migrator.phar
+env: ARTEFACT_VERSION=0.1.$TRAVIS_BUILD_NUMBER ARTEFACT_NAME=db_migrator.phar
 before install: composer install
 script: phpunit tests
 after_success: php createPhar.php $ARTEFACT_NAME $ARTEFACT_VERSION
