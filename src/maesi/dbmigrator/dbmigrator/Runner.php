@@ -6,12 +6,6 @@ use logger\Logger;
 
 class Runner {
 
-	public static function fromIni($inifile = 'dbmigrator.ini') {
-		$config = parse_ini_file($inifile, true);
-		
-		self::fromConfig($config);
-	}
-	
 	public static function fromConfig(array $config) {
 		self::initLogger($config);
 		Logger::info('DBMigrator Version ' . DB_MIGRATOR_VERSION);
