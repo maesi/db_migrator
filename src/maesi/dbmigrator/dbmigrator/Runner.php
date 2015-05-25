@@ -14,6 +14,7 @@ class Runner {
 	
 	public static function fromConfig(array $config) {
 		self::initLogger($config);
+		Logger::info('DBMigrator Version ' . DB_MIGRATOR_VERSION);
 		
 		try {
 			$dbmigrator = new DBMigrator($config['db.connection']);

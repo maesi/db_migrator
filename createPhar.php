@@ -1,20 +1,31 @@
 <?php
-if(strcmp(php_sapi_name(),'cli') == 0 && isset($argv[1])) {
-	$file = $argv[1];
-	print_r($argv);
-} else if(isset($_GET['file'])) {
-	$file = $_GET['file'];
+$file = 'db_migrator.phar';
+$version = 'local';
+if(strcmp(php_sapi_name(),'cli') == 0) {
+	$newline = PHP_EOL;
+	if(isset($argv[1])) {
+		$file = $argv[1];
+	}
+	if(isset($argv[2])) {
+		$version = $argv[2];
+	}
 } else {
-	$file = 'db_migrator.phar';
+	$newline = "<br />";
+	if(isset($_GET['file'])) {
+		$file = $_GET['file'];
+	}
+	if(isset($_GET['version'])) {
+		$version = $_GET['version'];
+	}
 }
-$newline = strcmp(php_sapi_name(),'cli') == 0 ? PHP_EOL : "<br />";
+
 $pharFile = __DIR__.DIRECTORY_SEPARATOR.$file;
 if(file_exists($pharFile)) {
 	echo "delete existing phar".$newline;
 	unlink($pharFile);
 }
 
-echo "create phar: $pharFile".$newline;
+echo "create phar: $pharFile (version: $version)".$newline;
 $phar = new Phar($pharFile);
 
 $Directory = new RecursiveDirectoryIterator(__DIR__.DIRECTORY_SEPARATOR);
@@ -27,5 +38,6 @@ foreach($Regex as $name => $object){
 	$phar->addFile($name);
 }
 echo "add stub".$newline;
-$phar->setStub(file_get_contents('stub.php'));
+$stub_content = str_replace("#DB_MIGRATOR_VERSION_PLACEHOLDER#", $version, file_get_contents('stub.php'));
+$phar->setStub($stub_content);
 echo "finish".$newline;
