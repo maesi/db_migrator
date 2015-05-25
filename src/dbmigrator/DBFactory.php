@@ -1,7 +1,5 @@
 <?php
-namespace dbmigrator;
-
-use exception\ClassNotFoundException;
+namespace maesi\dbmigrator;
 
 class DBFactory {
 

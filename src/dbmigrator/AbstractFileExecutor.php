@@ -1,5 +1,5 @@
 <?php
-namespace dbmigrator;
+namespace maesi\dbmigrator;
 
 abstract class AbstractFileExecutor implements Executable {
 

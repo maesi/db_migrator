@@ -1,5 +1,5 @@
 <?php
-namespace dbmigrator;
+namespace maesi\dbmigrator;
 
 class SqlFileExecutor extends AbstractFileExecutor {
 	

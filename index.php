@@ -1,15 +1,15 @@
 <?php
-require 'vendor/autoload.php';
-include 'stub.php';
+$loader = require __DIR__ . "/vendor/autoload.php";
+$loader->addPsr4('maesi\\', __DIR__.'/src');
 
-use dbmigrator\Runner;
+use maesi\dbmigrator\Runner;
 use Monolog\Logger;
 use Monolog\Registry;
 use Monolog\Handler\BrowserConsoleHandler;
 use Monolog\Handler\StreamHandler;
 
 $config['db.connection']['name'] 			= 'mysql';
-$config['db.connection']['class']			= 'dbmigrator\MySQL';
+$config['db.connection']['class']			= 'maesi\dbmigrator\MySQL';
 $config['db.connection']['host']			= 'localhost';
 $config['db.connection']['username']		= 'root';
 $config['db.connection']['password']		= 'root';
