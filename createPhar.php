@@ -1,6 +1,7 @@
 <?php
 if(strcmp(php_sapi_name(),'cli') == 0 && isset($argv[1])) {
 	$file = $argv[1];
+	print_r($argv);
 } else if(isset($_GET['file'])) {
 	$file = $_GET['file'];
 } else {
