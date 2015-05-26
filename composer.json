@@ -11,7 +11,12 @@
     	}
     ],
     "autoload": {
-        "psr-4": {"maesi\\": "src/"}
+        "psr-4": {"maesi\\dbmigrator\\": "src/"}
+    },
+    "autoload-dev": {
+        "psr-4": { 
+            "maesi\\dbmigrator\tests\\": "tests/"
+        }
     },
     "require": {
         "monolog/monolog": "1.13.1"
