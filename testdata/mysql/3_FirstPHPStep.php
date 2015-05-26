@@ -1,8 +1,8 @@
 <?php
-use dbmigrator\Executable;
-use dbmigrator\AbstractFileExecutor;
-use dbmigrator\DB;
-use logger\Logger;
+use maesi\dbmigrator\Executable;
+use maesi\dbmigrator\Logger;
+use maesi\dbmigrator\AbstractFileExecutor;
+use maesi\dbmigrator\DB;
 
 class FirstPHPStep extends AbstractFileExecutor {
 
