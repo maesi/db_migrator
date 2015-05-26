@@ -3,11 +3,5 @@
 .project
 .settings
 
-# log file
-log
-
 # composer
 vendor
-
-# created phar
-*.phar

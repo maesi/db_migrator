@@ -4,18 +4,9 @@ php:
 - 5.4
 - 5.5
 - 5.6
-env: ARTEFACT_VERSION=0.1.$TRAVIS_BUILD_NUMBER ARTEFACT_NAME=db_migrator.phar
+env: ARTEFACT_VERSION=0.1.$TRAVIS_BUILD_NUMBER
 before install: composer install
 script: phpunit tests
-after_success: php createPhar.php $ARTEFACT_NAME $ARTEFACT_VERSION
-deploy:
-  provider: releases
-  api_key:
-    secure: fst1n+YKhmOzl7zaUi8KL77xZFUpyfr7/4mYHmaKzABpxcs+fzYT+J/veRsNM40XEfT3PQz4QwcVF0oD6lsd/D//YZN6WvfAzq+pX8Sfj43nB6PA1RUeqJwKzY0bYfZ3YATv8vcMHUD+LMfJZhkLiqVHPmBkv1V5iXOF0M3/hxuedZcuFZ6cDL93zxTMFVr00jH4Jwt29ZVWZ9azdVDRLKfWNdudhPVvuhJSO3VqmK9TySBM4NdaALDNXJu+Jp1YUknsXr69sOyFNRAthV2HEGlzwUGOEUsK49mn5Ybd44M15J6ADPuqoVLLBwDsDd3KqSkFqwycbakUbsGMSwPlzcR5xkiHFEOwxgJPiq3fgTWd3XIEW0oozw8mpPHa+H9CCd37Q5DQxm0QFhq+UU7E1aKHKx+9QUy5NKO2i9oxEQu3Jso1tbyQldkm1ISHTO6WUZNtgUyjt+LD9vtXId1wI/gpbVvBNZwQK1ggfrG4dqH93ZyQRto+HhReu0trqTv0UwqiK4/flnyG4++fDcgYbEQRzd0ig91EGiRY01Oyy3YlU6zFbEyglyRhPKjSOdiaj8FocQST++gh4rqkAJst16jXwjHxkY9uVhWHibYC0gz5fqGUGEYyMnj0+YZmiIJMhGyKXPciHwyP8K5rUrcU/NFfm6NJtD7GDntkIPlYZqo=
-  file: $ARTEFACT_NAME
-  on:
-    repo: maesi/db_migrator
-    tags: true
 notifications:
   email:
     on_success: never
