@@ -4,7 +4,6 @@ php:
 - 5.4
 - 5.5
 - 5.6
-env: ARTEFACT_VERSION=0.2.$TRAVIS_BUILD_NUMBER
 before install: composer install
 script: phpunit tests
 notifications:
