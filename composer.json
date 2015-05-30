@@ -3,6 +3,7 @@
     "type": "library",
     "description": "",
     "homepage": "https://github.com/maesi/db_migrator",
+    "license": "MIT",
     "authors": [
     	{
     		"name": "Marcel Arnold",
@@ -11,7 +12,9 @@
     	}
     ],
     "autoload": {
-        "psr-4": {"maesi\\dbmigrator\\": "src/"}
+        "psr-4": {
+        	"maesi\\dbmigrator\\": "src/"
+        }
     },
     "autoload-dev": {
         "psr-4": { 
